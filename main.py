@@ -1,5 +1,5 @@
 import redis
-import chat_utils
+from chat_utils import *
 
 # Connessione al database Redis tramite il tunnel SSL di stunnel
 conn = redis.Redis(

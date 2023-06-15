@@ -1,5 +1,11 @@
 import redis
 
+
+# Connessione al database Redis tramite il tunnel SSL di stunnel
+conn = redis.Redis(
+    host='redis-12733.c300.eu-central-1-1.ec2.cloud.redislabs.com',
+    port=12733,
+    password='Fz7wqpeYtOfJzuVuHMHDOjLGMCcY5MUV')
 # Funzione per la registrazione di un nuovo utente
 def registrazione(conn, username, password):
     # Verifica se l'utente esiste già
