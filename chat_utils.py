@@ -5,7 +5,7 @@ import redis
 conn = redis.Redis(
     host='redis-12733.c300.eu-central-1-1.ec2.cloud.redislabs.com',
     port=12733,
-    password='Fz7wqpeYtOfJzuVuHMHDOjLGMCcY5MUV')
+    password='Inserisci la tua psw')
 # Funzione per la registrazione di un nuovo utente
 def registrazione(conn, username, password):
     # Verifica se l'utente esiste già

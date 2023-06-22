@@ -1,11 +1,12 @@
 import redis
 from chat_utils import *
 
-# Connessione al database Redis tramite il tunnel SSL di stunnel
-conn = redis.Redis(
-    host='redis-12733.c300.eu-central-1-1.ec2.cloud.redislabs.com',
-    port=12733,
-    password='Fz7wqpeYtOfJzuVuHMHDOjLGMCcY5MUV')
+import redis
+
+r = redis.Redis(
+  host='redis-12114.c293.eu-central-1-1.ec2.cloud.redislabs.com',
+  port=12114,
+  password='3FYHn60i42mOmITHT7CnlJI4SoYyoX4P')
 
 # Funzione principale
 def main():
