@@ -5,7 +5,7 @@ import redis
 conn = redis.Redis(
     host='redis-12733.c300.eu-central-1-1.ec2.cloud.redislabs.com',
     port=12733,
-    password='Inserisci la tua psw')
+    password='Inserisci la tua password qui')
 # Funzione per la registrazione di un nuovo utente
 def registrazione(conn, username, password):
     # Verifica se l'utente esiste già
@@ -94,3 +94,24 @@ def mostra_utenti_registrati():
             print(f"Username: {username}, Password: {password}")
     else:
         print("Nessun utente registrato.")
+
+# Funzione per eliminare un utente
+def elimina_utente(conn, username):
+    # Verifica se l'utente esiste
+    if conn.hexists("utenti", username):
+        # Rimuovi l'utente dal database
+        conn.hdel("utenti", username)
+        # Rimuovi tutti i messaggi inviati o ricevuti dall'utente
+        for messaggio_id in conn.hkeys("messaggi"):
+            messaggio = conn.hget("messaggi", messaggio_id)
+            mittente, destinatario, _ = messaggio.decode().split(":")
+            if mittente == username or destinatario == username:
+                conn.hdel("messaggi", messaggio_id)
+        print(f"L'utente {username} è stato eliminato.")
+    else:
+        print("L'utente specificato non esiste.")
+
+# Funzione per eseguire l'eliminazione di un utente
+def esegui_eliminazione_utente():
+    username = input("Inserisci l'username dell'utente da eliminare: ")
+    elimina_utente(conn, username)

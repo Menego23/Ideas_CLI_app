@@ -1,12 +1,11 @@
 import redis
 from chat_utils import *
 
-import redis
-
-r = redis.Redis(
-  host='redis-12114.c293.eu-central-1-1.ec2.cloud.redislabs.com',
-  port=12114,
-  password='3FYHn60i42mOmITHT7CnlJI4SoYyoX4P')
+# Connessione al database Redis tramite il tunnel SSL di stunnel
+conn = redis.Redis(
+    host='redis-12733.c300.eu-central-1-1.ec2.cloud.redislabs.com',
+    port=12733,
+    password='Inserisci la tua password qui')
 
 # Funzione principale
 def main():
@@ -17,7 +16,8 @@ def main():
             print("1. Registrati")
             print("2. Accedi")
             print("3. Mostra utenti registrati")
-            print("4. Esci")
+            print("4. Elimina utente")
+            print("5. Esci")
             scelta = input("Seleziona un'opzione: ")
 
             if scelta == "1":
@@ -27,6 +27,8 @@ def main():
             elif scelta == "3":
                 mostra_utenti_registrati()
             elif scelta == "4":
+                esegui_eliminazione_utente()
+            elif scelta == "5":
                 break
             else:
                 print("Opzione non valida. Riprova.")
@@ -34,7 +36,8 @@ def main():
             print("\nOpzioni:")
             print("1. Invia messaggio")
             print("2. Scarica messaggi")
-            print("3. Logout")
+            print("3. Elimina utente")
+            print("4. Logout")
             scelta = input("Seleziona un'opzione: ")
 
             if scelta == "1":
@@ -42,6 +45,8 @@ def main():
             elif scelta == "2":
                 scarica_messaggi_utente(utente_corrente)
             elif scelta == "3":
+                esegui_eliminazione_utente()
+            elif scelta == "4":
                 utente_corrente = None
             else:
                 print("Opzione non valida. Riprova.")
