@@ -3,9 +3,10 @@ from chat_utils import *
 
 # Connessione al database Redis tramite il tunnel SSL di stunnel
 conn = redis.Redis(
-    host='redis-12733.c300.eu-central-1-1.ec2.cloud.redislabs.com',
-    port=12733,
-    password='Inserisci la tua password qui')
+  host='redis-10706.c55.eu-central-1-1.ec2.cloud.redislabs.com',
+  port=10706,
+  password='Ackv9mbB90OH8ZvoD6mJtXcWZwumKk5i')
+
 
 # Funzione principale
 def main():
